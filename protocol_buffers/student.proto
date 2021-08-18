@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message Student {
+  int32 ra = 1;
+  string name = 2;
+  int32 period = 3;
+  int32 course_code = 4;
+}
+
+message getStudentRequest {
+    int32 ra = 1;
+}
+
+message getStudentResponse {
+    Student student = 1;
+}
+
+message getStudentsResponse {
+    repeated Student students = 1;
+}
+
