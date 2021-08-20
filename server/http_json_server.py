@@ -60,8 +60,7 @@ def student():
                 response = student_service.remove_student(request_data["ra"])
 
     except SQLAlchemyError as e:
-        error = str(e)
-        raise APIError(error, status_code=500)
+        raise APIError(str(e), status_code=400)
 
     if v.errors:
         raise APIError(json.dumps(v.errors), status_code=400)
@@ -83,9 +82,9 @@ def students():
     try:
         if v.validate(search, schemas.enrolled_students_query_schema):
             response = student_service.get_students_by_enrollment(search)
+
     except SQLAlchemyError as e:
-        error = str(e)
-        raise APIError(error, status_code=500)
+        raise APIError(str(e), status_code=400)
 
     if v.errors:
         raise APIError(json.dumps(v.errors), status_code=400)
@@ -115,8 +114,7 @@ def course():
                 response = course_service.remove_course(request_data["code"])
 
     except SQLAlchemyError as e:
-        error = str(e)
-        raise APIError(error, status_code=400)
+        raise APIError(str(e), status_code=400)
 
     if v.errors:
         raise APIError(json.dumps(v.errors), status_code=400)
@@ -147,8 +145,7 @@ def subject():
                 response = subject_service.remove_subject(request_data["code"])
 
     except SQLAlchemyError as e:
-        error = str(e)
-        raise APIError(error, status_code=400)
+        raise APIError(str(e), status_code=400)
 
     if v.errors:
         raise APIError(json.dumps(v.errors), status_code=400)
@@ -184,8 +181,7 @@ def enrollment():
                 )
 
     except SQLAlchemyError as e:
-        error = str(e)
-        raise APIError(error, status_code=400)
+        raise APIError(str(e), status_code=400)
 
     if v.errors:
         raise APIError(json.dumps(v.errors), status_code=400)
