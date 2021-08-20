@@ -75,6 +75,11 @@ def student():
 @app.route("/students/enrolled", methods=["GET"])
 def students():
     search = request.args.to_dict()
+    for key in search:
+        try:
+            search[key] = int(search[key])
+        except:
+            pass
     try:
         if v.validate(search, schemas.enrolled_students_query_schema):
             response = student_service.get_students_by_enrollment(search)
