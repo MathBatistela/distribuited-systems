@@ -50,7 +50,7 @@ class Subject(Base):
     name = Column(String)
     professor = Column(String)
     course_code = Column(Integer, ForeignKey('course.code'))
-    students = relationship('Enrollment', back_populates='subject')
+    enrolled_students = relationship('Enrollment', back_populates='subject')
 
 
 class Student(Base):

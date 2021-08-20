@@ -1,5 +1,5 @@
 import sys
-from database.db import Student, session
+from database.db import Enrollment, Student, Subject, session
 
 sys.path.append("..")
 
@@ -16,6 +16,12 @@ def create_student(context: dict) -> dict:
 
 def get_students() -> list:
     return list(map(lambda o: o.asdict(), session.query(Student).all()))
+
+def get_students_by_enrollment(search: dict) -> list:
+    query = session.query(Enrollment)
+    for attr,value in search.items():
+        query = query.filter( getattr(Enrollment,attr)==value )
+    return list(map(lambda o: o.student.asdict(), query.all()))
 
 
 def get_student(ra: int) -> dict:
