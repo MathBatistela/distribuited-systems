@@ -4,7 +4,7 @@ a grades manager service
 
 Authors:
     @MathBatistela
-    @MarcosGolom
+    @mvgolom
 
 Created at: 20/08/2021
 Updated at: 21/08/2021
@@ -26,26 +26,17 @@ logging.basicConfig(
 )
 
 # possible methods
-METHODS = {
-    0: "update_grade",
-    1: "get_students_by_enrollment"
-}
+METHODS = {0: "update_grade", 1: "get_students_by_enrollment"}
 
 # possible responses
-RESPONSES = {
-    "server_response": 0,
-    "students_response": 1
-}
+RESPONSES = {"server_response": 0, "students_response": 1}
 
 # header sizes
-HEADER = {
-    "METHOD": 2,
-    "PB_SIZE": 4
-}
+HEADER = {"METHOD": 2, "PB_SIZE": 4}
 
 
 def get_students_by_enrollment(request):
-    """Consultation of students of a subject in one year/semester. 
+    """Consultation of students of a subject in one year/semester.
 
     Args:
         request (bufsize: int): Marshaled StudentQueryByEnrollmentRequest message
@@ -138,6 +129,7 @@ def generate_header(response_type, response_data):
     header = response_type + response_size
     return header
 
+
 def raise_error(socket, message, status):
     """Send an error to connected client
 
@@ -149,9 +141,7 @@ def raise_error(socket, message, status):
     logging.error(message)
     err_response = server_pb2.Response(status=status, message=message)
     header = generate_header(RESPONSES["server_response"], err_response)
-    socket.send(header), socket.send(
-        err_response.SerializeToString()
-    )
+    socket.send(header), socket.send(err_response.SerializeToString())
 
 
 def handle_client(clientsocket, addr):
@@ -187,7 +177,7 @@ def handle_client(clientsocket, addr):
             raise_error(clientsocket, "Internal server error", 500)
 
     else:
-      raise_error(clientsocket, f"Method with code {method} does not exist", 404)
+        raise_error(clientsocket, f"Method with code {method} does not exist", 404)
 
     # closes the connection
     clientsocket.close()
