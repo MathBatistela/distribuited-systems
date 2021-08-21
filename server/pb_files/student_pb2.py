@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\rstudent.proto\"H\n\x07Student\x12\n\n\x02ra\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06period\x18\x03 \x01(\x05\x12\x13\n\x0b\x63ourse_code\x18\x04 \x01(\x05\"\x1f\n\x11getStudentRequest\x12\n\n\x02ra\x18\x01 \x01(\x05\"/\n\x12getStudentResponse\x12\x19\n\x07student\x18\x01 \x01(\x0b\x32\x08.Student\"1\n\x13getStudentsResponse\x12\x1a\n\x08students\x18\x01 \x03(\x0b\x32\x08.Studentb\x06proto3'
+  serialized_pb=b'\n\rstudent.proto\"H\n\x07Student\x12\n\n\x02ra\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06period\x18\x03 \x01(\x05\x12\x13\n\x0b\x63ourse_code\x18\x04 \x01(\x05\".\n\x10StudentsResponse\x12\x1a\n\x08students\x18\x01 \x03(\x0b\x32\x08.Student\"m\n\x12UpdateGradeRequest\x12\x14\n\x0csubject_code\x18\x01 \x01(\t\x12\x12\n\nstudent_ra\x18\x02 \x01(\x05\x12\x0c\n\x04year\x18\x03 \x01(\x05\x12\x10\n\x08semester\x18\x04 \x01(\x05\x12\r\n\x05grade\x18\x05 \x01(\x02\"w\n\x1fStudentQueryByEnrollmentRequest\x12\x14\n\x0csubject_code\x18\x01 \x01(\t\x12\x11\n\x04year\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12\x15\n\x08semester\x18\x03 \x01(\x05H\x01\x88\x01\x01\x42\x07\n\x05_yearB\x0b\n\t_semesterb\x06proto3'
 )
 
 
@@ -78,80 +78,16 @@ _STUDENT = _descriptor.Descriptor(
 )
 
 
-_GETSTUDENTREQUEST = _descriptor.Descriptor(
-  name='getStudentRequest',
-  full_name='getStudentRequest',
+_STUDENTSRESPONSE = _descriptor.Descriptor(
+  name='StudentsResponse',
+  full_name='StudentsResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='ra', full_name='getStudentRequest.ra', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=91,
-  serialized_end=122,
-)
-
-
-_GETSTUDENTRESPONSE = _descriptor.Descriptor(
-  name='getStudentResponse',
-  full_name='getStudentResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='student', full_name='getStudentResponse.student', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=124,
-  serialized_end=171,
-)
-
-
-_GETSTUDENTSRESPONSE = _descriptor.Descriptor(
-  name='getStudentsResponse',
-  full_name='getStudentsResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='students', full_name='getStudentsResponse.students', index=0,
+      name='students', full_name='StudentsResponse.students', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -169,16 +105,137 @@ _GETSTUDENTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=173,
-  serialized_end=222,
+  serialized_start=91,
+  serialized_end=137,
 )
 
-_GETSTUDENTRESPONSE.fields_by_name['student'].message_type = _STUDENT
-_GETSTUDENTSRESPONSE.fields_by_name['students'].message_type = _STUDENT
+
+_UPDATEGRADEREQUEST = _descriptor.Descriptor(
+  name='UpdateGradeRequest',
+  full_name='UpdateGradeRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='subject_code', full_name='UpdateGradeRequest.subject_code', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='student_ra', full_name='UpdateGradeRequest.student_ra', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='year', full_name='UpdateGradeRequest.year', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='semester', full_name='UpdateGradeRequest.semester', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='grade', full_name='UpdateGradeRequest.grade', index=4,
+      number=5, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=139,
+  serialized_end=248,
+)
+
+
+_STUDENTQUERYBYENROLLMENTREQUEST = _descriptor.Descriptor(
+  name='StudentQueryByEnrollmentRequest',
+  full_name='StudentQueryByEnrollmentRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='subject_code', full_name='StudentQueryByEnrollmentRequest.subject_code', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='year', full_name='StudentQueryByEnrollmentRequest.year', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='semester', full_name='StudentQueryByEnrollmentRequest.semester', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_year', full_name='StudentQueryByEnrollmentRequest._year',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_semester', full_name='StudentQueryByEnrollmentRequest._semester',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=250,
+  serialized_end=369,
+)
+
+_STUDENTSRESPONSE.fields_by_name['students'].message_type = _STUDENT
+_STUDENTQUERYBYENROLLMENTREQUEST.oneofs_by_name['_year'].fields.append(
+  _STUDENTQUERYBYENROLLMENTREQUEST.fields_by_name['year'])
+_STUDENTQUERYBYENROLLMENTREQUEST.fields_by_name['year'].containing_oneof = _STUDENTQUERYBYENROLLMENTREQUEST.oneofs_by_name['_year']
+_STUDENTQUERYBYENROLLMENTREQUEST.oneofs_by_name['_semester'].fields.append(
+  _STUDENTQUERYBYENROLLMENTREQUEST.fields_by_name['semester'])
+_STUDENTQUERYBYENROLLMENTREQUEST.fields_by_name['semester'].containing_oneof = _STUDENTQUERYBYENROLLMENTREQUEST.oneofs_by_name['_semester']
 DESCRIPTOR.message_types_by_name['Student'] = _STUDENT
-DESCRIPTOR.message_types_by_name['getStudentRequest'] = _GETSTUDENTREQUEST
-DESCRIPTOR.message_types_by_name['getStudentResponse'] = _GETSTUDENTRESPONSE
-DESCRIPTOR.message_types_by_name['getStudentsResponse'] = _GETSTUDENTSRESPONSE
+DESCRIPTOR.message_types_by_name['StudentsResponse'] = _STUDENTSRESPONSE
+DESCRIPTOR.message_types_by_name['UpdateGradeRequest'] = _UPDATEGRADEREQUEST
+DESCRIPTOR.message_types_by_name['StudentQueryByEnrollmentRequest'] = _STUDENTQUERYBYENROLLMENTREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Student = _reflection.GeneratedProtocolMessageType('Student', (_message.Message,), {
@@ -188,26 +245,26 @@ Student = _reflection.GeneratedProtocolMessageType('Student', (_message.Message,
   })
 _sym_db.RegisterMessage(Student)
 
-getStudentRequest = _reflection.GeneratedProtocolMessageType('getStudentRequest', (_message.Message,), {
-  'DESCRIPTOR' : _GETSTUDENTREQUEST,
+StudentsResponse = _reflection.GeneratedProtocolMessageType('StudentsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _STUDENTSRESPONSE,
   '__module__' : 'student_pb2'
-  # @@protoc_insertion_point(class_scope:getStudentRequest)
+  # @@protoc_insertion_point(class_scope:StudentsResponse)
   })
-_sym_db.RegisterMessage(getStudentRequest)
+_sym_db.RegisterMessage(StudentsResponse)
 
-getStudentResponse = _reflection.GeneratedProtocolMessageType('getStudentResponse', (_message.Message,), {
-  'DESCRIPTOR' : _GETSTUDENTRESPONSE,
+UpdateGradeRequest = _reflection.GeneratedProtocolMessageType('UpdateGradeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _UPDATEGRADEREQUEST,
   '__module__' : 'student_pb2'
-  # @@protoc_insertion_point(class_scope:getStudentResponse)
+  # @@protoc_insertion_point(class_scope:UpdateGradeRequest)
   })
-_sym_db.RegisterMessage(getStudentResponse)
+_sym_db.RegisterMessage(UpdateGradeRequest)
 
-getStudentsResponse = _reflection.GeneratedProtocolMessageType('getStudentsResponse', (_message.Message,), {
-  'DESCRIPTOR' : _GETSTUDENTSRESPONSE,
+StudentQueryByEnrollmentRequest = _reflection.GeneratedProtocolMessageType('StudentQueryByEnrollmentRequest', (_message.Message,), {
+  'DESCRIPTOR' : _STUDENTQUERYBYENROLLMENTREQUEST,
   '__module__' : 'student_pb2'
-  # @@protoc_insertion_point(class_scope:getStudentsResponse)
+  # @@protoc_insertion_point(class_scope:StudentQueryByEnrollmentRequest)
   })
-_sym_db.RegisterMessage(getStudentsResponse)
+_sym_db.RegisterMessage(StudentQueryByEnrollmentRequest)
 
 
 # @@protoc_insertion_point(module_scope)

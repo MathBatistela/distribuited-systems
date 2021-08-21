@@ -16,18 +16,19 @@ def create_enrollment(context: dict) -> dict:
 
 def get_enrollments(search: dict) -> list:
     query = session.query(Enrollment)
-    for attr,value in search.items():
-        query = query.filter( getattr(Enrollment,attr)==value )
+    for attr, value in search.items():
+        query = query.filter(getattr(Enrollment, attr) == value)
 
     return list(map(lambda o: o.asdict(), query.all()))
 
 
-def get_enrollment(subject_code: str, student_ra: int) -> dict:
-    return (session.query(Enrollment).filter_by(subject_code=subject_code, student_ra=student_ra).one()).asdict()
+def get_enrollment(subject_code: str, student_ra: int, year: int, semester: int) -> dict:
+    return (session.query(Enrollment).filter_by(subject_code=subject_code, student_ra=student_ra, year=year, semester=semester).one()).asdict()
 
 
 def update_enrollment(context: dict) -> dict:
-    enrollment = session.query(Enrollment).filter_by(subject_code=context["subject_code"], student_ra=context["student_ra"]).one()
+    enrollment = session.query(Enrollment).filter_by(
+        subject_code=context["subject_code"], student_ra=context["student_ra"], year=context["year"], semester=context["semester"]).one()
 
     if enrollment:
         for attr in context.keys():
@@ -38,8 +39,9 @@ def update_enrollment(context: dict) -> dict:
         return enrollment.asdict()
 
 
-def remove_enrollment(subject_code: str, student_ra: int) -> dict:
-    enrollment = session.query(Enrollment).filter_by(subject_code=subject_code, student_ra=student_ra).one()
+def remove_enrollment(subject_code: str, student_ra: int, year: int, semester: int) -> dict:
+    enrollment = session.query(Enrollment).filter_by(
+        subject_code=subject_code, student_ra=student_ra, year=year, semester=semester).one()
 
     if enrollment:
         session.delete(enrollment)

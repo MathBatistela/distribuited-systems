@@ -1,6 +1,4 @@
 import json
-from re import search
-
 import schemas
 from flask import Flask, request, jsonify
 from services import (
@@ -48,22 +46,22 @@ def student():
 
     try:
         if request.method == "GET" and v.validate(request_data, schemas.student_pk_schema):
-                response = student_service.get_student(request_data["ra"])
+            response = student_service.get_student(request_data["ra"])
 
         elif request.method == "POST" and v.validate(request_data, schemas.student_create_schema):
-                response = student_service.create_student(request_data)
+            response = student_service.create_student(request_data)
 
         elif request.method == "PUT" and v.validate(request_data, schemas.student_update_schema):
-                response = student_service.update_student(request_data)
+            response = student_service.update_student(request_data)
 
         elif request.method == "DELETE" and v.validate(request_data, schemas.student_pk_schema):
-                response = student_service.remove_student(request_data["ra"])
+            response = student_service.remove_student(request_data["ra"])
 
     except SQLAlchemyError as e:
         raise APIError(str(e), status_code=400)
 
     if v.errors:
-        raise APIError(json.dumps(v.errors), status_code=400)
+        raise APIError(str(v.errors).strip("{}"), status_code=400)
 
     if response:
         return jsonify(response), 200
@@ -87,7 +85,7 @@ def students():
         raise APIError(str(e), status_code=400)
 
     if v.errors:
-        raise APIError(json.dumps(v.errors), status_code=400)
+        raise APIError(str(v.errors).strip("{}"), status_code=400)
 
     return jsonify(response), 200
 
@@ -102,22 +100,22 @@ def course():
 
     try:
         if request.method == "GET" and v.validate(request_data, schemas.course_pk_schema):
-                response = course_service.get_course(request_data["code"])
+            response = course_service.get_course(request_data["code"])
 
         elif request.method == "POST" and v.validate(request_data, schemas.course_create_schema):
-                response = course_service.create_course(request_data)
+            response = course_service.create_course(request_data)
 
         elif request.method == "PUT" and v.validate(request_data, schemas.course_update_schema):
-                response = course_service.update_course(request_data)
+            response = course_service.update_course(request_data)
 
         elif request.method == "DELETE" and v.validate(request_data, schemas.course_pk_schema):
-                response = course_service.remove_course(request_data["code"])
+            response = course_service.remove_course(request_data["code"])
 
     except SQLAlchemyError as e:
         raise APIError(str(e), status_code=400)
 
     if v.errors:
-        raise APIError(json.dumps(v.errors), status_code=400)
+        raise APIError(str(v.errors).strip("{}"), status_code=400)
 
     if response:
         return jsonify(response), 200
@@ -133,22 +131,22 @@ def subject():
         return jsonify({"status": 400, "message": "Bad request"}), 400
     try:
         if request.method == "GET" and v.validate(request_data, schemas.subject_pk_schema):
-                response = subject_service.get_subject(request_data["code"])
+            response = subject_service.get_subject(request_data["code"])
 
         elif request.method == "POST" and v.validate(request_data, schemas.subject_create_schema):
-                response = subject_service.create_subject(request_data)
+            response = subject_service.create_subject(request_data)
 
         elif request.method == "PUT" and v.validate(request_data, schemas.subject_update_schema):
-                response = subject_service.update_subject(request_data)
+            response = subject_service.update_subject(request_data)
 
         elif request.method == "DELETE" and v.validate(request_data, schemas.subject_pk_schema):
-                response = subject_service.remove_subject(request_data["code"])
+            response = subject_service.remove_subject(request_data["code"])
 
     except SQLAlchemyError as e:
         raise APIError(str(e), status_code=400)
 
     if v.errors:
-        raise APIError(json.dumps(v.errors), status_code=400)
+        raise APIError(str(v.errors).strip("{}"), status_code=400)
 
     if response:
         return jsonify(response), 200
@@ -165,26 +163,26 @@ def enrollment():
 
     try:
         if request.method == "GET" and v.validate(request_data, schemas.enrollment_pk_schema):
-                response = enrollment_service.get_enrollment(
-                    request_data["subject_code"], request_data["student_ra"]
-                )
+            response = enrollment_service.get_enrollment(
+                request_data["subject_code"], request_data["student_ra"], request_data["year"], request_data["semester"]
+            )
 
         elif request.method == "POST" and v.validate(request_data, schemas.enrollment_create_schema):
-                response = enrollment_service.create_enrollment(request_data)
+            response = enrollment_service.create_enrollment(request_data)
 
         elif request.method == "PUT" and v.validate(request_data, schemas.enrollment_update_schema):
-                response = enrollment_service.update_enrollment(request_data)
+            response = enrollment_service.update_enrollment(request_data)
 
         elif request.method == "DELETE" and v.validate(request_data, schemas.enrollment_pk_schema):
-                response = enrollment_service.remove_enrollment(
-                    request_data["subject_code"], request_data["student_ra"]
-                )
+            response = enrollment_service.remove_enrollment(
+                request_data["subject_code"], request_data["student_ra"], request_data["year"], request_data["semester"]
+            )
 
     except SQLAlchemyError as e:
         raise APIError(str(e), status_code=400)
 
     if v.errors:
-        raise APIError(json.dumps(v.errors), status_code=400)
+        raise APIError(str(v.errors).strip("{}"), status_code=400)
 
     if response:
         return jsonify(response), 200

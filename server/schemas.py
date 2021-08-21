@@ -62,13 +62,15 @@ enrollment_create_schema = {
 enrollment_pk_schema = {
     "subject_code": {"type": "string", "required": True},
     "student_ra": {"type": "integer", "required": True},
+    "year": {"type": "integer", "required": True},
+    "semester": {"type": "integer", "required": True},
 }
 
 enrollment_update_schema = {
     "subject_code": {"type": "string", "required": True},
     "student_ra": {"type": "integer", "required": True},
-    "year": {"type": "integer"},
-    "semester": {"type": "integer"},
+    "year": {"type": "integer", "required": True},
+    "semester": {"type": "integer", "required": True},
     "abscenses": {"type": "integer"},
     "grade": {"type": "float"},
 }
@@ -76,7 +78,7 @@ enrollment_update_schema = {
 # schemas for queries
 
 enrolled_students_query_schema = {
-    "subject_code": {"type": "string"},
+    "subject_code": {"type": "string", "required": True},
     "year": {"type": "integer"},
     "semester": {"type": "integer"},
 }
