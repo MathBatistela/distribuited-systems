@@ -1,6 +1,23 @@
 syntax = "proto3";
 
+import "enrollment.proto";
+import "student.proto";
+
 message Response {
     int32 status = 1;
     string message = 2;
+}
+
+message AbscencesAndGradesBySubjectResponse {
+    int32 abscenses = 1;
+    repeated float grades = 2;
+}
+
+service GradesManager {
+    rpc createEnrollment (Enrollment) returns (Enrollment);
+    rpc getEnrollment (EnrollmentPkRequest) returns (Enrollment);
+    rpc updateEnrollment (UpdateEnrollmentRequest) returns (Enrollment);
+    rpc deleteEnrollment (EnrollmentPkRequest) returns (Response);
+    rpc getAbscensesAndGradesBySubject (EnrollmentQueryBySubjectRequest) returns (AbscencesAndGradesBySubjectResponse);
+    rpc getStudentsBySubject (StudentQueryBySubjectRequest) returns (StudentsResponse);
 }

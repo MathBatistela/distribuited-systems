@@ -6,94 +6,198 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
+import pb_files.enrollment_pb2 as enrollment__pb2
+import pb_files.student_pb2 as student__pb2
+
+
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name="server.proto",
-    package="",
-    syntax="proto3",
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x0cserver.proto"+\n\x08Response\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\tb\x06proto3',
-)
+  name='server.proto',
+  package='',
+  syntax='proto3',
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n\x0cserver.proto\x1a\x10\x65nrollment.proto\x1a\rstudent.proto\"+\n\x08Response\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\"H\n#AbscencesAndGradesBySubjectResponse\x12\x11\n\tabscenses\x18\x01 \x01(\x05\x12\x0e\n\x06grades\x18\x02 \x03(\x02\x32\x95\x03\n\rGradesManager\x12,\n\x10\x63reateEnrollment\x12\x0b.Enrollment\x1a\x0b.Enrollment\x12\x32\n\rgetEnrollment\x12\x14.EnrollmentPkRequest\x1a\x0b.Enrollment\x12\x39\n\x10updateEnrollment\x12\x18.UpdateEnrollmentRequest\x1a\x0b.Enrollment\x12\x33\n\x10\x64\x65leteEnrollment\x12\x14.EnrollmentPkRequest\x1a\t.Response\x12h\n\x1egetAbscensesAndGradesBySubject\x12 .EnrollmentQueryBySubjectRequest\x1a$.AbscencesAndGradesBySubjectResponse\x12H\n\x14getStudentsBySubject\x12\x1d.StudentQueryBySubjectRequest\x1a\x11.StudentsResponseb\x06proto3'
+  ,
+  dependencies=[enrollment__pb2.DESCRIPTOR,student__pb2.DESCRIPTOR,])
+
+
 
 
 _RESPONSE = _descriptor.Descriptor(
-    name="Response",
-    full_name="Response",
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    create_key=_descriptor._internal_create_key,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name="status",
-            full_name="Response.status",
-            index=0,
-            number=1,
-            type=5,
-            cpp_type=1,
-            label=1,
-            has_default_value=False,
-            default_value=0,
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="message",
-            full_name="Response.message",
-            index=1,
-            number=2,
-            type=9,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"".decode("utf-8"),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-    ],
-    extensions=[],
-    nested_types=[],
-    enum_types=[],
-    serialized_options=None,
-    is_extendable=False,
-    syntax="proto3",
-    extension_ranges=[],
-    oneofs=[],
-    serialized_start=16,
-    serialized_end=59,
+  name='Response',
+  full_name='Response',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='Response.status', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='Response.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=49,
+  serialized_end=92,
 )
 
-DESCRIPTOR.message_types_by_name["Response"] = _RESPONSE
+
+_ABSCENCESANDGRADESBYSUBJECTRESPONSE = _descriptor.Descriptor(
+  name='AbscencesAndGradesBySubjectResponse',
+  full_name='AbscencesAndGradesBySubjectResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='abscenses', full_name='AbscencesAndGradesBySubjectResponse.abscenses', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='grades', full_name='AbscencesAndGradesBySubjectResponse.grades', index=1,
+      number=2, type=2, cpp_type=6, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=94,
+  serialized_end=166,
+)
+
+DESCRIPTOR.message_types_by_name['Response'] = _RESPONSE
+DESCRIPTOR.message_types_by_name['AbscencesAndGradesBySubjectResponse'] = _ABSCENCESANDGRADESBYSUBJECTRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Response = _reflection.GeneratedProtocolMessageType(
-    "Response",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _RESPONSE,
-        "__module__": "server_pb2"
-        # @@protoc_insertion_point(class_scope:Response)
-    },
-)
+Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+  'DESCRIPTOR' : _RESPONSE,
+  '__module__' : 'server_pb2'
+  # @@protoc_insertion_point(class_scope:Response)
+  })
 _sym_db.RegisterMessage(Response)
 
+AbscencesAndGradesBySubjectResponse = _reflection.GeneratedProtocolMessageType('AbscencesAndGradesBySubjectResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ABSCENCESANDGRADESBYSUBJECTRESPONSE,
+  '__module__' : 'server_pb2'
+  # @@protoc_insertion_point(class_scope:AbscencesAndGradesBySubjectResponse)
+  })
+_sym_db.RegisterMessage(AbscencesAndGradesBySubjectResponse)
+
+
+
+_GRADESMANAGER = _descriptor.ServiceDescriptor(
+  name='GradesManager',
+  full_name='GradesManager',
+  file=DESCRIPTOR,
+  index=0,
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_start=169,
+  serialized_end=574,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='createEnrollment',
+    full_name='GradesManager.createEnrollment',
+    index=0,
+    containing_service=None,
+    input_type=enrollment__pb2._ENROLLMENT,
+    output_type=enrollment__pb2._ENROLLMENT,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='getEnrollment',
+    full_name='GradesManager.getEnrollment',
+    index=1,
+    containing_service=None,
+    input_type=enrollment__pb2._ENROLLMENTPKREQUEST,
+    output_type=enrollment__pb2._ENROLLMENT,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='updateEnrollment',
+    full_name='GradesManager.updateEnrollment',
+    index=2,
+    containing_service=None,
+    input_type=enrollment__pb2._UPDATEENROLLMENTREQUEST,
+    output_type=enrollment__pb2._ENROLLMENT,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='deleteEnrollment',
+    full_name='GradesManager.deleteEnrollment',
+    index=3,
+    containing_service=None,
+    input_type=enrollment__pb2._ENROLLMENTPKREQUEST,
+    output_type=_RESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='getAbscensesAndGradesBySubject',
+    full_name='GradesManager.getAbscensesAndGradesBySubject',
+    index=4,
+    containing_service=None,
+    input_type=enrollment__pb2._ENROLLMENTQUERYBYSUBJECTREQUEST,
+    output_type=_ABSCENCESANDGRADESBYSUBJECTRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='getStudentsBySubject',
+    full_name='GradesManager.getStudentsBySubject',
+    index=5,
+    containing_service=None,
+    input_type=student__pb2._STUDENTQUERYBYSUBJECTREQUEST,
+    output_type=student__pb2._STUDENTSRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_GRADESMANAGER)
+
+DESCRIPTOR.services_by_name['GradesManager'] = _GRADESMANAGER
 
 # @@protoc_insertion_point(module_scope)

@@ -39,14 +39,14 @@ def get_students_by_enrollment(request):
     """Consultation of students of a subject in one year/semester.
 
     Args:
-        request (bufsize: int): Marshaled StudentQueryByEnrollmentRequest message
+        request (bufsize: int): Marshaled StudentQueryBySubjectRequest message
 
     Returns:
         A tuple with Response type and a StudentsResponse or Response message
     """
 
     # unmarshalling
-    request_msg = student_pb2.StudentQueryByEnrollmentRequest()
+    request_msg = student_pb2.StudentQueryBySubjectRequest()
     request_msg.ParseFromString(request)
     request_dict = json_format.MessageToDict(
         request_msg, preserving_proto_field_name=True
