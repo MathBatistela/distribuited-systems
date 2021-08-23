@@ -10,10 +10,8 @@ Created at: 14/08/2021
 Updated at: 21/08/2021
 """
 
-import sys
 from database.db import Enrollment, Student, Subject, session
 
-sys.path.append("..")
 
 
 def create_student(context: dict) -> dict:

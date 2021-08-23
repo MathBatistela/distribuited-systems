@@ -10,11 +10,7 @@ Created at: 14/08/2021
 Updated at: 21/08/2021
 """
 
-import sys
 from database.db import Course, session
-
-sys.path.append("..")
-
 
 def create_course(context: dict) -> dict:
     """Creates a Course row in DB

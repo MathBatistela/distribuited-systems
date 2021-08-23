@@ -10,11 +10,7 @@ Created at: 14/08/2021
 Updated at: 21/08/2021
 """
 
-import sys
 from database.db import Subject, session
-
-sys.path.append("..")
-
 
 def create_subject(context: dict) -> dict:
     """Creates a Subject row in DB

@@ -10,10 +10,7 @@ Created at: 14/08/2021
 Updated at: 21/08/2021
 """
 
-import sys
 from database.db import Enrollment, session
-
-sys.path.append("..")
 
 
 def create_enrollment(context: dict) -> dict:
@@ -72,7 +69,7 @@ def get_enrollment(
             year=year,
             semester=semester,
         )
-        .one()
+        .first()
     ).asdict()
 
 
@@ -93,7 +90,7 @@ def update_enrollment(context: dict) -> dict:
             year=context["year"],
             semester=context["semester"],
         )
-        .one()
+        .first()
     )
 
     if enrollment:
@@ -127,7 +124,7 @@ def remove_enrollment(
             year=year,
             semester=semester,
         )
-        .one()
+        .first()
     )
 
     if enrollment:
