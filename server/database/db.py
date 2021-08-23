@@ -8,11 +8,6 @@ Authors:
 Created at: 14/08/2021
 Updated at: 21/08/2021
 """
-
-import sys
-
-sys.path.append("..")
-
 from sqlalchemy import Column, String, Integer, ForeignKey, Float, inspect
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
