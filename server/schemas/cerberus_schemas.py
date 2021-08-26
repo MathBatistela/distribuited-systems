@@ -1,3 +1,14 @@
+"""
+Schemas used by Cerberus module to validate requested data dictionaries
+
+Authors:
+    @MathBatistela
+    @mvgolom
+
+Created at: 14/08/2021
+Updated at: 21/08/2021
+"""
+
 # schemas for students
 
 student_create_schema = {

@@ -19,7 +19,7 @@ message UpdateGradeRequest {
     float grade = 5;
 }
 
-message StudentQueryByEnrollmentRequest {
+message StudentQueryBySubjectRequest {
     string subject_code = 1;
     int32 year = 2;
     int32 semester = 3;

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+message Enrollment {
+    string subject_code = 1;
+    int32 student_ra = 2;
+    int32 year = 3;
+    int32 semester = 4;
+    float grade = 5;
+    int32 abscenses = 6;
+}
+
+message EnrollmentsResponse {
+    repeated Enrollment enrollments = 1;
+}
+
+message EnrollmentPkRequest {
+    string subject_code = 1;
+    int32 student_ra = 2;
+    int32 year = 3;
+    int32 semester = 4;
+}
+
+message EnrollmentQueryBySubjectRequest {
+    string subject_code = 1;
+    optional int32 year = 2;
+    optional int32 semester = 3;
+}
+
+message UpdateEnrollmentRequest {
+    string subject_code = 1;
+    int32 student_ra = 2;
+    int32 year = 3;
+    int32 semester = 4;
+    optional float grade = 5;
+    optional int32 abscenses = 6;
+}
