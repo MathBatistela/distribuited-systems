@@ -171,7 +171,6 @@ def handle_client(clientsocket, addr):
     pb_size = int.from_bytes(
         header[-HEADER["PB_SIZE"] :], byteorder="little", signed=False
     )
-
     # getting the request message
     pb_message = clientsocket.recv(pb_size)
 

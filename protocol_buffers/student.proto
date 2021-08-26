@@ -21,8 +21,8 @@ message UpdateGradeRequest {
 
 message StudentQueryByEnrollmentRequest {
     string subject_code = 1;
-    optional int32 year = 2;
-    optional int32 semester = 3;
+    int32 year = 2;
+    int32 semester = 3;
 }
 
 
