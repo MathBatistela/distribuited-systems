@@ -61,7 +61,8 @@ def get_enrollment(
     Returns:
         dict: Enrollment object as dictonary
     """
-    return (
+
+    enrollment = (
         session.query(Enrollment)
         .filter_by(
             subject_code=subject_code,
@@ -70,7 +71,11 @@ def get_enrollment(
             semester=semester,
         )
         .first()
-    ).asdict()
+    )
+    if enrollment:
+        return enrollment.asdict()
+    else:
+        return {}
 
 
 def update_enrollment(context: dict) -> dict:

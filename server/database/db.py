@@ -21,7 +21,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 # opens DB and creates a session
-engine = create_engine("sqlite:///database/grades_manager.db")
+engine = create_engine("sqlite:///database/grades_manager.db",
+connect_args={'check_same_thread': False}
+)
 Session = sessionmaker(bind=engine)
 session = Session()
 
