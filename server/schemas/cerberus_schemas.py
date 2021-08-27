@@ -93,3 +93,9 @@ enrolled_students_query_schema = {
     "year": {"type": "integer"},
     "semester": {"type": "integer"},
 }
+
+enrollment_query_schema = {
+    "subject_code": {"type": "string", "required": True},
+    "year": {"type": "integer"},
+    "semester": {"type": "integer"},
+}
