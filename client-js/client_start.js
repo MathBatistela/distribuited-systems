@@ -1,9 +1,22 @@
+/*
+Grpc client that comunicates with Protobuff server over Protobuff
+manage student + grades + enrollment
+Authors:
+    @MathBatistela
+    @mvgolom
+
+Created at: 22/08/2021
+Updated at: 23/08/2021
+Updated at: 27/08/2021
+*/
 const readlineSync = require("readline-sync");
+// cli options
 actions = ["Cadastrar Notas","Consultar Notas","Atualizar Notas","Remover Notas", "Consultar Notas e Faltas", "Consultar Alunos de uma disciplina"]
+// load client config file
 const client = require("./client");
 
-
-const cadastra_nota = () =>{
+// functions create grade
+const create_grade = () =>{
     let subject_code = readlineSync.question("Informe o codigo da materia: ");
     let student_ra = readlineSync.question("Informe o RA do aluno: ");
     let year = readlineSync.question("Informe o ano: ");
@@ -18,8 +31,8 @@ const cadastra_nota = () =>{
         grade,
         abscenses}
 }
-
-const consulta_notas = () =>{
+// functions search grade by RA
+const search_grade = () =>{
     let subject_code = readlineSync.question("Informe o codigo da materia: ");
     let student_ra = readlineSync.question("Informe o RA do aluno: ");
     let year = readlineSync.question("Informe o ano: ");
@@ -31,8 +44,8 @@ const consulta_notas = () =>{
         semester
     }
 }
-
-const atualiza_nota = () =>{
+// functions update grade
+const update_grade = () =>{
     let subject_code = readlineSync.question("Informe o codigo da materia: ");
     let student_ra = readlineSync.question("Informe o RA do aluno: ");
     let year = readlineSync.question("Informe o ano: ");
@@ -47,8 +60,8 @@ const atualiza_nota = () =>{
         grade,
         abscenses}
 }
-
-const remove_nota = () =>{
+// functions update grade
+const remove_grade = () =>{
     let subject_code = readlineSync.question("Informe o codigo da materia: ");
     let student_ra = readlineSync.question("Informe o RA do aluno: ");
     let year = readlineSync.question("Informe o ano: ");
@@ -60,8 +73,8 @@ const remove_nota = () =>{
         semester,
     }
 }
-
-const consulta_nota_faltas = () =>{
+// functions search grade and abscenses
+const search_grade_abscenses = () =>{
     let subject_code = readlineSync.question("Informe o codigo da materia: ");
     let year = readlineSync.question("Informe o ano: ");
     let semester = readlineSync.question("Informe o semestre: ");
@@ -71,8 +84,8 @@ const consulta_nota_faltas = () =>{
         semester
     }
 }
-
-const consulta_alunos = () =>{
+// functions search student by RA
+const search_student = () =>{
     let subject_code = readlineSync.question("Informe o codigo da materia: ");
     let year = readlineSync.question("Informe o ano: ");
     let semester = readlineSync.question("Informe o semestre: ");
@@ -88,9 +101,10 @@ let stopFunc = true;
 // while (stopFunc) {
     let index = readlineSync.keyInSelect(actions, 'Qual operação você deseja realizar\n Para sair 0');
     switch (index + 1) {
+        //create grade
         case 1:
             console.log(actions[index])
-            client.createEnrollment(cadastra_nota(), (error, news) => {
+            client.createEnrollment(create_grade(), (error, news) => {
                 if (!error) {
                     console.log(news)
                 }else{
@@ -98,9 +112,10 @@ let stopFunc = true;
                 }
             });
             break;
+        //search grade
         case 2:
             console.log(actions[index])
-            client.getEnrollment(consulta_notas(), (error, news) => {
+            client.getEnrollment(search_grade(), (error, news) => {
                 if (!error) {
                     console.log(news)
                 }else{
@@ -108,9 +123,10 @@ let stopFunc = true;
                 }
             });
             break;
+        //update grade
         case 3:
             console.log(actions[index])
-            client.updateEnrollment(atualiza_nota(), (error, news) => {
+            client.updateEnrollment(update_grade(), (error, news) => {
                 if (!error) {
                     console.log(news)
                 }else{
@@ -118,9 +134,10 @@ let stopFunc = true;
                 }
             });
             break;
+        //remove grade
         case 4:
             console.log(actions[index])
-            client.deleteEnrollment(remove_nota(), (error, news) => {
+            client.deleteEnrollment(remove_grade(), (error, news) => {
                 if (!error) {
                     console.log(news)
                 }else{
@@ -128,9 +145,10 @@ let stopFunc = true;
                 }
             });
             break;
+        //search grade abscenses
         case 5:
             console.log(actions[index])
-            client.getAbscensesAndGradesBySubject(consulta_nota_faltas(), (error, news) => {
+            client.getAbscensesAndGradesBySubject(search_grade_abscenses(), (error, news) => {
                 if (!error) {
                     console.log(news)
                 }else{
@@ -138,9 +156,10 @@ let stopFunc = true;
                 }
             });
             break;
+        //search student by RA
         case 6:
             console.log(actions[index])
-            client.getStudentsBySubject(consulta_alunos(), (error, news) => {
+            client.getStudentsBySubject(search_student(), (error, news) => {
                 if (!error) {
                     console.log(news)
                 }else{
@@ -148,6 +167,7 @@ let stopFunc = true;
                 }
             });
             break;
+        //exit
         case 0:
             stopFunc = false;
             break;

@@ -1,14 +1,27 @@
+"""
+TCP client that comunicates with server over TCP using Google Protobuffer
+manage student grades + enrollment
+Authors:
+    @MathBatistela
+    @mvgolom
+
+Created at: 22/08/2021
+Updated at: 23/08/2021
+Updated at: 27/08/2021
+"""
 require 'socket'
 require './pb_files/student_pb.rb'
 require './pb_files/server_pb.rb'
 require 'objspace'
 
+# convert msg and len into server header 
 def wrap(msg,len)
     finalmsg = [msg].pack("v")
     finalLen = [len].pack("V")
     return finalmsg+finalLen
 end
 
+# send header + buff over TCP to server
 def get_data(header,buff)
     server = TCPSocket.open('localhost', 2020)
     server.write buff
@@ -19,6 +32,7 @@ def get_data(header,buff)
     return method, protobuf
 end
 
+# receive server msg and show formated
 def show_data(method, protobuf)
     if method == 1
         students_response = StudentModule::StudentsResponse.decode(protobuf)
@@ -36,6 +50,7 @@ def show_data(method, protobuf)
     end
 end
 
+# main loop for choose operation
 loopFlag = true
 while loopFlag
     puts "1 - Get students by enrollment:"
@@ -43,6 +58,7 @@ while loopFlag
     puts "0 to exit:"
     choose = gets.chomp.to_i
     case choose
+    # search studend by subject
     when 1
         request = StudentModule::StudentQueryBySubjectRequest.new
         puts "Subject code: "
@@ -55,6 +71,7 @@ while loopFlag
         header = wrap(1,ObjectSpace.memsize_of(request))
         method, protobuf = get_data(header,encoded)
         show_data(method, protobuf)
+    # Upgrade student grade in server
     when 2
         request = StudentModule::UpdateGradeRequest.new
         puts "Subject Code"
